@@ -4,15 +4,11 @@ After=network.target
 
 [Service]
 ExecStart={{ elasticsearch_exporter_symlink }} \
-            --es.uri {{ elasticsearch_exporter_es_uri }} \
-            --es.all {{ elasticsearch_exporter_es_all }} \
-            --es.indices {{ elasticsearch_exporter_es_indices }} \
-            --es.shards {{ elasticsearch_exporter_es_shards }} \
+            --es.uri="{{ elasticsearch_exporter_es_uri }}" \
+            {{ elasticsearch_exporter_flags }} \
             --es.timeout {{ elasticsearch_exporter_es_timeout }} \
-            --es.ssl-skip-verify {{ elasticsearch_exporter_es_ssl_skip_verify }} \
             --web.listen-address {{ elasticsearch_exporter_web_listen_address }} \
             --web.telemetry-path {{ elasticsearch_exporter_web_telemetry_path }} 
-            
 
 [Install]
 WantedBy=multi-user.target
